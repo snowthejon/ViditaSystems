@@ -45,5 +45,13 @@ class ImageLoaderController:
 			)
 		)
 
-	def get_images(self, user: UserSchema, image_search_filter: ImageSearchFilterSchema) -> List[ImageSchema]:
+	def get_images(self, user: UserSchema, image_search_filter: ImageSearchFilterSchema) -> List[ImageSchema] | None:
+		"""
+		Получение фотографий с фильтром по мета-дате. Абсолютно все поля фильтра опциональны.
+
+
+		:param user: 					схема пользозвателя
+		:param image_search_filter: 	схема фильтра
+		:return: 						список схем фотографий
+		"""
 		return self._image_repository.get_user_images(user_id=user.id, image_search_filter=image_search_filter)
